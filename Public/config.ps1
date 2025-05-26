@@ -46,7 +46,7 @@ $artConfig = [PSCustomObject]@{
 # For log filenames to update with the current time when they are accessed, they need to be initiated as ScriptProperty properties
 $scriptParam = @{
   MemberType  = "ScriptProperty"
-  InputObject = $PrivateConfig
+  InputObject = $artConfig
   Name        = "timeLocal"
   Value       = { (Get-Date(get-date) -uformat "%Y-%m-%d").ToString() }
 }
@@ -54,7 +54,7 @@ Add-Member @scriptParam
 
 $scriptParam = @{
   MemberType  = "ScriptProperty"
-  InputObject = $PrivateConfig
+  InputObject = $artConfig
   Name        = "logFileName"
   Value       = { "$($artConfig.timeLocal)`_$($artConfig.basehostname)-ExecLog.csv" }
 }
